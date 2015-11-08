@@ -1,0 +1,65 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}pinax-project-account{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block body_base %}
+    <section class="jumbotron">
+        <div class="container">
+            {% include "_messages.html" %}
+            <h1>{% blocktrans %}Welcome to<br>Fish Fish{% endblocktrans %}</h1>
+            <p>
+                {% blocktrans %}
+                Create and share events with friends and family. Social media that aims to make you socialise!
+                {% endblocktrans %}
+            </p>
+            {% if not user.is_authenticated %}
+            {% url "account_login" as login_url %}
+            {% url "account_signup" as signup_url %}
+            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn btn-default">Log In</a> or <a href="{{ signup_url }}" class="btn btn-primary">Sign Up</a> to try out the site.{% endblocktrans %}</p>
+            {% endif %}
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <h2 class="text-center">{% blocktrans %}What is Fish Fish?{% endblocktrans %}</h2>
+            <p class="lead">
+                {% blocktrans %}
+                <b>Fish Fish</b> is an application aimed at organising events. Whilst we are a social media platform we <em>strongly</em>believe that it is the time you spend with your friends and family that makes life special. We can help you make the organising process easier, think of us as Doodle on Steroids!
+                {% endblocktrans %}
+            </p>
+            <div class="feature-columns">
+                <div>
+                    <i class="fa fa-cubes fa-3x"></i><br>
+                    {% blocktrans %}
+                    <b>Create Events</b> with all the info you would expect, dates, locations and see who is coming!
+                    {% endblocktrans %}
+                </div>
+                <div>
+                    <i class="fa fa-puzzle-piece fa-3x"></i><br>
+                    {% blocktrans %}
+                    <b>Ask Questions</b> for those unkown elements, which pub we going to? What dates are you free? Create you own questions!
+                    {% endblocktrans %}
+                </div>
+                <div>
+                    <i class="fa fa-tint fa-3x"></i><br>
+                    {% blocktrans %}
+                    <b>Chat</b> with all the members of the group, spend time with your friends not organising your friends.
+                    {% endblocktrans %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <p class="lead text-center">
+                {% blocktrans %}
+                Created by <a href="http://afield.io">Adam</a> and <a href="http://dandvoracek.com">Dan</a>
+                {% endblocktrans %}
+            </p>
+        </div>
+    </section>
+{% endblock %}
